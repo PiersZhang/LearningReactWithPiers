@@ -1,68 +1,119 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### 涉及到的知识
+1. [es6解构赋值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#%E9%BB%98%E8%AE%A4%E5%80%BC_2) 
+   常用解构操作
+   ```
+    // 解构数组
+    var foo = ["one", "two", "three"];
+    var [one, two, three] = foo;
+    console.log(one); // "one"
+    console.log(two); // "two"
+    console.log(three); // "three"
 
-## Available Scripts
+    // 将剩余数组赋值给一个变量
+    var [a, ...b] = [1, 2, 3];
+    console.log(a); // 1
+    console.log(b); // [2, 3]
 
-In the project directory, you can run:
+    // 解构对象
+    var o = {p: 42, q: true};
+    var {p, q} = o;
+    console.log(p); // 42
+    console.log(q); // true
 
-### `npm start`
+    // 结构对象设置默认值
+    var {a = 10, b = 5} = {a: 3};
+    console.log(a); // 3
+    console.log(b); // 5
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    // 函数参数默认值
+    function drawES2015Chart({size = 'big', cords = { x: 0, y: 0 }, radius = 25} = {}) {
+        console.log(size, cords, radius);
+    }
+    drawES2015Chart({
+        cords: { x: 18, y: 30 },
+        radius: 30
+    });
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+    // 解构嵌套对象和数组
+    const metadata = {
+    title: 'Scratchpad',
+    translations: [
+        {
+        locale: 'de',
+        localization_tags: [],
+        last_edit: '2014-04-14T08:43:37',
+        url: '/de/docs/Tools/Scratchpad',
+        title: 'JavaScript-Umgebung'
+        }
+    ],
+    url: '/en-US/docs/Tools/Scratchpad'
+    };
+    let {
+    title: englishTitle, // 重命名
+    translations: [
+        {
+        title: localeTitle, // 重命名
+        },
+    ],
+    } = metadata;
+    console.log(englishTitle); // "Scratchpad"
+    console.log(localeTitle);  // "JavaScript-Umgebung"
 
-### `npm test`
+    // For of 迭代和解构
+    var people = [
+    {
+        name: 'Mike Smith',
+        family: {
+        mother: 'Jane Smith',
+        father: 'Harry Smith',
+        sister: 'Samantha Smith'
+        },
+        age: 35
+    },
+    {
+        name: 'Tom Jones',
+        family: {
+        mother: 'Norah Jones',
+        father: 'Richard Jones',
+        brother: 'Howard Jones'
+        },
+        age: 25
+    }
+    ];
+    for (var {name: n, family: {father: f}} of people) {
+    console.log('Name: ' + n + ', Father: ' + f);
+    }
+    // "Name: Mike Smith, Father: Harry Smith"
+    // "Name: Tom Jones, Father: Richard Jones"
+   ```
+2. Fragment标签讲解
+加上最外层的DIV，组件就是完全正常的，但是你的布局就偏不需要这个最外层的标签怎么办?比如我们在作Flex布局的时候,外层还真的不能有包裹元素。这种矛盾其实React16已经有所考虑了，为我们准备了<Fragment>标签
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+3. 在用map循环时，需要设置一个不同的值，这个时React的要求。我们可以暂时用index+item的形式来实现
+    ```
+        <ul>
+            {
+                this.state.list.map((item,index)=>{
+                    return <li key={index+item}>{item}</li>
+                })
+            }
+        </ul>
+    ```
+4. JSX中的html解析问题
+如果想在文本框里输入一个<h1>标签，并进行渲染。默认是不会生效的，只会把<h1>标签打印到页面上，这并不是我想要的。如果工作中有这种需求，可以使用dangerouslySetInnerHTML属性解决。具体代码如下：
+    ```
+    <ul>
+        {
+            this.state.list.map((item,index)=>{
+                return (
+                    <li 
+                        key={index+item}
+                        onClick={this.deleteItem.bind(this,index)}
+                        dangerouslySetInnerHTML={{__html:item}}
+                    >
+                    </li>
+                )
+            })
+        }
+    </ul> 
+    ```
