@@ -95,3 +95,26 @@
         index:PropTypes.number
     }
    ```
+6. ref使用中的坑
+    实这个坑是因为`React`中的`setState`是一个异步函数所造成的。也就是这个`setState`，代码执行是有一个时间的，如果你真的想了解清楚，你需要对什么是虚拟DOM有一个了解。简单的说，就是因为是异步，还没等虚拟Dom渲染，我们的`console.log`就已经执行了。
+   ```
+    addList(){
+        this.setState({
+            list:[...this.state.list,this.state.inputValue],
+            inputValue:''
+        })
+        console.log(this.ul.querySelectorAll('div').length); // 打印出来比真实数据少一个
+    }
+    ```
+    **解决方法**
+    `setState`方法提供了一个回调函数，也就是它的第二个函数。下面这样写就可以实现我们想要的方法了
+    ```
+    addList(){
+        this.setState({
+            list:[...this.state.list,this.state.inputValue],
+            inputValue:''
+        },()=>{
+            console.log(this.ul.querySelectorAll('div').length)
+        })
+    }
+    ```

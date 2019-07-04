@@ -15,7 +15,8 @@ class Demo extends Component {
     inputChange = (e) => {
         // this.state.inputValue=e.target.value; // 不能直接给state里的值赋值
         this.setState({
-            inputValue:e.target.value
+            // inputValue:e.target.value
+            inputValue:this.input.value
         })
     };
     // 新增一条数据
@@ -23,7 +24,10 @@ class Demo extends Component {
         this.setState({
             inputValue:'' , // 添加一条数据后自动清空input中的内容
             list:[...this.state.list,this.state.inputValue]
+        }, () => {
+            console.log(this.ul.querySelectorAll('li').length);
         })
+        console.log(this.ul.querySelectorAll('li').length);
     }
     // 删除一条数据
     deleteItem = (index, e) => {
@@ -37,10 +41,11 @@ class Demo extends Component {
         return (
             <div>
                 <div>
-                    <input value={this.state.inputValue} onChange={this.inputChange} />
+                    {/* <input value={this.state.inputValue} onChange={this.inputChange} /> */}
+                    <input value={this.state.inputValue} onChange={this.inputChange} ref={(input)=>{this.input=input}} />
                     <button onClick={this.addList}> 增加服务 </button>
                 </div>
-                <ul>
+                <ul ref={(ul)=>{this.ul=ul}}>
                     {
                         this.state.list.map((item,index)=>{
                             return (
