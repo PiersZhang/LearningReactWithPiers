@@ -1,7 +1,7 @@
 #### 涉及到的知识
 1. [es6解构赋值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#%E9%BB%98%E8%AE%A4%E5%80%BC_2) 
    常用解构操作
-   ```
+   ```JavaScript
     // 解构数组
     var foo = ["one", "two", "three"];
     var [one, two, three] = foo;
@@ -90,7 +90,7 @@
 加上最外层的DIV，组件就是完全正常的，但是你的布局就偏不需要这个最外层的标签怎么办?比如我们在作Flex布局的时候,外层还真的不能有包裹元素。这种矛盾其实React16已经有所考虑了，为我们准备了<Fragment>标签
 
 3. 在用map循环时，需要设置一个不同的值，这个时React的要求。我们可以暂时用index+item的形式来实现
-    ```
+    ```JavaScript
         <ul>
             {
                 this.state.list.map((item,index)=>{
