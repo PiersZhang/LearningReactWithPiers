@@ -1,11 +1,11 @@
-#### 涉及到的知识
-1. 书写更加快的jsx插件[Simple React Snippets](https://marketplace.visualstudio.com/items?itemName=EQuimper.react-native-react-redux-snippets-for-es6-es7-version-standard)
+## 涉及到的知识
+### 书写更加快的jsx插件[Simple React Snippets](https://marketplace.visualstudio.com/items?itemName=EQuimper.react-native-react-redux-snippets-for-es6-es7-version-standard)
 ---
-2. 组件的拆分 父子组件传值
+### 组件的拆分 父子组件传值
    1. 父组件向子组件传递内容，靠属性的形式传递。如demo02.js向demoItem.js中传item值通过content属性
    2. 子组件向父组件传值,React有明确规定，子组件时不能操作父组件里的数据的，所以需要借助一个父组件的方法，来修改父组件的内容
 ---
-3. 函数的绑定bind、箭头函数、构造函数中绑定性能会高一些，特别是在高级组件开发中
+### 函数的绑定bind、箭头函数、构造函数中绑定性能会高一些，特别是在高级组件开发中
    1. **使用React.createClass**
    react15及一下版本中，提供React.createClass函数来创建一个组件，在里面创建的所有的函数的this都会自动绑定到组件上
    ```JavaScript
@@ -86,9 +86,9 @@
     6. **总结**
     如果你使用ES6和React 16以上的版本，最佳实践是使用第5种方法来绑定`this`
 ---
-4. Chrome插件`React developer tools`，从此告别low比的console.log
+### Chrome插件`React developer tools`，从此告别low比的console.log
 ---
-5. React高级-PropTypes校验传递值 ,可以用[typescript](https://www.typescriptlang.org/)和[flow](https://flow.org/)代替
+### React高级-PropTypes校验传递值 ,可以用[typescript](https://www.typescriptlang.org/)和[flow](https://flow.org/)代替
    ```JavaScript
     import PropTypes from 'prop-types'
    ```
@@ -100,7 +100,7 @@
     }
    ```
 ---
-6. ref使用中的坑
+###ß ref使用中的坑
     实这个坑是因为`React`中的`setState`是一个异步函数所造成的。也就是这个`setState`，代码执行是有一个时间的，如果你真的想了解清楚，你需要对什么是虚拟DOM有一个了解。简单的说，就是因为是异步，还没等虚拟Dom渲染，我们的`console.log`就已经执行了。
    ```JavaScript
     addList(){
@@ -123,3 +123,4 @@
         })
     }
     ```
+ß

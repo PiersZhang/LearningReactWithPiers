@@ -1,4 +1,4 @@
-#### 涉及到的知识
+## 涉及到的知识
 1. [es6解构赋值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#%E9%BB%98%E8%AE%A4%E5%80%BC_2) 
    常用解构操作
    ```JavaScript
@@ -101,7 +101,7 @@
     ```
 4. JSX中的html解析问题
 如果想在文本框里输入一个`<h1>`标签，并进行渲染。默认是不会生效的，只会把`<h1>`标签打印到页面上，这并不是我想要的。如果工作中有这种需求，可以使用dangerouslySetInnerHTML属性解决。具体代码如下：
-    ```
+    ```JavaScript
     <ul>
         {
             this.state.list.map((item,index)=>{
