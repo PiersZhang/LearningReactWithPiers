@@ -1,11 +1,7 @@
 ## 涉及到的知识
 ### 书写更加快的jsx插件[Simple React Snippets](https://marketplace.visualstudio.com/items?itemName=EQuimper.react-native-react-redux-snippets-for-es6-es7-version-standard)
 ---
-<<<<<<< HEAD
 ### 组件的拆分 父子组件传值
-=======
-2. **组件的拆分 父子组件传值**
->>>>>>> 5f9e8c9504218eb340976c45bd489f34899afd30
    1. 父组件向子组件传递内容，靠属性的形式传递。如demo02.js向demoItem.js中传item值通过content属性
    2. 子组件向父组件传值,React有明确规定，子组件时不能操作父组件里的数据的，所以需要借助一个父组件的方法，来修改父组件的内容
 ---
@@ -104,7 +100,7 @@
     }
    ```
 ---
-###ß ref使用中的坑
+### ref使用中的坑
     实这个坑是因为`React`中的`setState`是一个异步函数所造成的。也就是这个`setState`，代码执行是有一个时间的，如果你真的想了解清楚，你需要对什么是虚拟DOM有一个了解。简单的说，就是因为是异步，还没等虚拟Dom渲染，我们的`console.log`就已经执行了。
    ```JavaScript
     addList(){
