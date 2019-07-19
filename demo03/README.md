@@ -3,16 +3,16 @@
    + constructor : 不算生命周期函数,可以把它看成React的`Initialization`阶段，定义属性（props）和状态(state)
 ---
 
-[react声明周期]('./public/reactLifeCycle.png')
+![react声明周期](./public/reactLifeCycle.png)
 ### Mounting阶段
-componentWillMount和componentDidMount这两个生命周期函数，只在页面刷新时执行一次，而render函数是只要有state和props变化就会执行
++ componentWillMount和componentDidMount这两个生命周期函数，只在页面刷新时执行一次，而render函数是只要有state和props变化就会执行
    `componentWillMount` : 在组件即将被挂载到页面的时刻执行。
    `render` : 页面state或props发生变化时执行。
    `componentDidMount` : 组件挂载完成时被执行。
 ---
 
 ### Updation阶段
-有两个基本部分组成，一个是props属性改变，一个是state状态改变
++ 有两个基本部分组成，一个是props属性改变，一个是state状态改变
    `shouldComponentUpdate` : 函数会在组件更新之前，自动被执行
    `componentWillUpdate` : 在组件更新之前,但`shouldComponenUpdate`之后被执行。但是如果`shouldComponentUpdate返`回`false`，这个函数就不会被执行
    `componentDidUpdate` : 在组件更新之后执行，它是组件更新的最后一个环节
@@ -20,7 +20,7 @@ componentWillMount和componentDidMount这两个生命周期函数，只在页面
 ---
 
 ### Unmounting阶段
-   `componentWillUnmount` : 它是在组件去除时执行
+ + `componentWillUnmount` : 它是在组件去除时执行
 ---
 
 ### 组件性能问题
