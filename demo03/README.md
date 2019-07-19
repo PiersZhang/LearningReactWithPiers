@@ -1,9 +1,9 @@
 ## 涉及到的知识
-### Initialization阶段 
-constructor : 不算生命周期函数,可以把它看成React的`Initialization`阶段，定义属性（props）和状态(state)
+### Initialization阶段
+   constructor : 不算生命周期函数,可以把它看成React的`Initialization`阶段，定义属性（props）和状态(state)
 ---
 
-[reactLifeCycle]('./public/reactLifeCycle.png')
+[react声明周期]('./public/reactLifeCycle.png')
 ### Mounting阶段
 componentWillMount和componentDidMount这两个生命周期函数，只在页面刷新时执行一次，而render函数是只要有state和props变化就会执行
    `componentWillMount` : 在组件即将被挂载到页面的时刻执行。
