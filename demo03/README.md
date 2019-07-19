@@ -1,6 +1,6 @@
 ## 涉及到的知识
 ### Initialization阶段
-   constructor : 不算生命周期函数,可以把它看成React的`Initialization`阶段，定义属性（props）和状态(state)
+   + constructor : 不算生命周期函数,可以把它看成React的`Initialization`阶段，定义属性（props）和状态(state)
 ---
 
 [react声明周期]('./public/reactLifeCycle.png')
