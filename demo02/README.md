@@ -22,7 +22,7 @@
    ```
    2. **render方法中使用bind**
    由于组件每次执行render将会重新分配函数这将会影响性能。特别是在你做了一些性能优化之后，它会破坏PureComponent性能。不推荐使用
-    ```JavaScript
+   ```JavaScript
     class App extends React.Component {
         handleClick() {
             console.log('this > ', this);
@@ -33,10 +33,10 @@
             )
         }
     }
-    ```
-    3. **render方法中使用箭头函数**
-    使用了ES6的上下文绑定来让this指向当前组件，但是它同第2种存在着相同的性能问题，不推荐使用
-    ```JavaScript
+   ```
+   3. **render方法中使用箭头函数**
+   使用了ES6的上下文绑定来让this指向当前组件，但是它同第2种存在着相同的性能问题，不推荐使用
+   ```JavaScript
     class App extends React.Component {
         handleClick() {
             console.log('this > ', this);
@@ -47,10 +47,10 @@
             )
         }
     }
-    ```
-    4. **构造函数中bind**
-    为了避免在render中绑定this引发可能的性能问题，我们可以在constructor中预先进行绑定。
-    ```JavaScript
+   ```
+   4. **构造函数中bind**
+   为了避免在render中绑定this引发可能的性能问题，我们可以在constructor中预先进行绑定。
+   ```JavaScript
     class App extends React.Component {
         constructor(props) {
             super(props);
@@ -65,10 +65,10 @@
             )
         }
     }
-    ```
-    5. **在定义阶段使用箭头函数绑定**
-    要使用这个功能，需要在.babelrc种开启[stage-2](https://www.cnblogs.com/chris-oil/p/5717544.html)功能，避免了第2种和第3种的可能潜在的性能问题，避免了第4种绑定时大量重复的代码
-    ```JavaScript
+   ```
+   5. **在定义阶段使用箭头函数绑定**
+   要使用这个功能，需要在.babelrc种开启[stage-2](https://www.cnblogs.com/chris-oil/p/5717544.html)功能，避免了第2种和第3种的可能潜在的性能问题，避免了第4种绑定时大量重复的代码
+   ```JavaScript
     class App extends React.Component {
         constructor(props) {
             super(props);
@@ -82,9 +82,9 @@
             )
         }
     }
-    ```
-    6. **总结**
-    如果你使用ES6和React 16以上的版本，最佳实践是使用第5种方法来绑定`this`
+   ```
+   6. **总结**
+   如果你使用ES6和React 16以上的版本，最佳实践是使用第5种方法来绑定`this`
 ---
 ### Chrome插件`React developer tools`，从此告别low比的console.log
 ---
@@ -101,7 +101,7 @@
    ```
 ---
 ### ref使用中的坑
-    实这个坑是因为`React`中的`setState`是一个异步函数所造成的。也就是这个`setState`，代码执行是有一个时间的，如果你真的想了解清楚，你需要对什么是虚拟DOM有一个了解。简单的说，就是因为是异步，还没等虚拟Dom渲染，我们的`console.log`就已经执行了。
+    这个坑是因为`React`中的`setState`是一个异步函数所造成的。也就是这个`setState`，代码执行是有一个时间的，如果你真的想了解清楚，你需要对什么是虚拟DOM有一个了解。简单的说，就是因为是异步，还没等虚拟Dom渲染，我们的`console.log`就已经执行了。
    ```JavaScript
     addList(){
         this.setState({
