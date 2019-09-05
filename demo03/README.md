@@ -76,3 +76,9 @@
     ...
     }
    ```
+   继承自`Component`的组件，若是`shouldComponentUpdate`返回`false`，就不会渲染了，继承自`PureComponent`的组件不用我们手动去判断`prop`和`state`，所以在`PureComponent`中使用`shouldComponentUpdate`会有如下警告:
+   ```
+   IndexPage has a method called shouldComponentUpdate(). shouldComponentUpdate should not be used when extending React.PureComponent. Please extend React.Component if shouldComponentUpdate is used.
+   ```
+   也是比较好理解的，就是不要在`PureComponent`中使用`shouldComponentUpdate`，因为根本没有必要
+
