@@ -68,7 +68,7 @@ import React, { Component, useState, useEffect, createContext, useContext } from
 //     }
 // }
 // export default Demo;
- 
+
 // -----------------HOC状态管理，把组件的状态提升到HOC中进行管理-----------------
 // function Demo(WrappedComponent) {
 //     return class extends Component {
@@ -76,7 +76,7 @@ import React, { Component, useState, useEffect, createContext, useContext } from
 //         super(props);
 //         this.state = { value: '' };
 //       }
-  
+
 //       onChange = (event) => {
 //         const { onChange } = this.props;
 //         this.setState({
@@ -87,7 +87,7 @@ import React, { Component, useState, useEffect, createContext, useContext } from
 //           }
 //         })
 //       }
-  
+
 //       render() {
 //         const newProps = {
 //           value: this.state.value,
@@ -114,7 +114,7 @@ import React, { Component, useState, useEffect, createContext, useContext } from
 //             <p>JSPang 今年:{age}岁</p>
 //             <p>性别:{sex}</p>
 //             <p>工作是:{work}</p>
-            
+
 //         </div>
 //     )
 // }
@@ -133,7 +133,7 @@ import React, { Component, useState, useEffect, createContext, useContext } from
 //             <p>JSPang 今年:{age}岁</p>
 //             <p>性别:{sex}</p>
 //             <p>工作是:{work}</p>
-            
+
 //         </div>
 //     )
 // }
@@ -190,3 +190,4 @@ import React, { Component, useState, useEffect, createContext, useContext } from
 //     return (<h2>{count}</h2>)
 // }
 // export default Demo;
+
